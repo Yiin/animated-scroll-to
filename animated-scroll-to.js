@@ -126,7 +126,7 @@
       duration = options.maxDuration;
     }
 
-    var startingTime = Date.now();
+    var startTime = Date.now();
 
     // Request animation frame ID
     var requestID = null;
@@ -165,11 +165,11 @@
     };
 
     var step = function () {
-      var timeDiff = Date.now() - startingTime;
+      var timeDiff = Date.now() - startTime;
       var t = (timeDiff / duration) - 1;
       var easing = t * t * t + 1;
       var scrollPosition = Math.round(initialScrollPosition + (diff * easing));
-
+console.log(diff)
       var doScroll = function(position) {
         if (options.isWindow) {
           if (options.horizontal) {
@@ -220,6 +220,6 @@
     }
     exports.default = __ANIMATE_SCROLL_TO;
   } else if (window) {
-    window.animateScrollTo = __ANIMATE_SCROLL_TO;
+    window.animateScrollToOld = __ANIMATE_SCROLL_TO;
   }
 }).call(this);
